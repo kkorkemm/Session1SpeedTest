@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Session1SpeedTest.Pages.HistoryPage"
+             Appearing="ContentPage_Appearing">
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Text="Transfer History"
+                   Margin="5"
+                   FontAttributes="Bold"/>
+
+            <ListView x:Name="ListHistory"
+                      HasUnevenRows="True"
+                      Margin="5"
+                      Grid.Row="1">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Relocation date: "/>
+                                    <Label Text="{Binding Path=TransferDate, StringFormat='{0:yyyy/MM/dd}'}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding FromDepartment}"/>
+                                    <Label Text="{Binding FromAssetSN}"
+                                           TextColor="{StaticResource RedColor}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding ToDepartment}"/>
+                                    <Label Text="{Binding ToAssetSN}"
+                                           TextColor="{StaticResource RedColor}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+
+            <Button Text="Back"
+                    x:Name="BtnBack"
+                    Style="{StaticResource RedButton}"
+                    HorizontalOptions="End"
+                    Margin="5"
+                    Grid.Row="2"
+                    Clicked="BtnBack_Clicked"/>
+
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Session1SpeedTest.Pages.AddEditAssetPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Entry Text="{Binding AssetName}"
+                   Placeholder="Asset Name"
+                   Margin="5"/>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Picker x:Name="ComboDepartments"
+                        ItemDisplayBinding="{Binding Name}"
+                        Title="Department"
+                        Margin="5"
+                        SelectedIndexChanged="ComboDepartments_SelectedIndexChanged"/>
+
+                <Picker x:Name="ComboLocations"
+                        ItemDisplayBinding="{Binding Name}"
+                        Title="Location"
+                        Margin="5"
+                        Grid.Column="1"/>
+                
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Picker x:Name="ComboGroups"
+                        ItemDisplayBinding="{Binding Name}"
+                        Title="Asset Group"
+                        Margin="5"
+                        SelectedIndexChanged="ComboGroups_SelectedIndexChanged"/>
+
+                <Picker x:Name="ComboEmployees"
+                        ItemDisplayBinding="{Binding FullName}"
+                        Title="Employee"
+                        Margin="5"
+                        Grid.Column="1"/>
+
+            </Grid>
+
+            <Editor Text="{Binding Description}"
+                    Placeholder="Description"
+                    HeightRequest="50"
+                    Grid.Row="3"
+                    Margin="5"/>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <DatePicker x:Name="DateWarranty"
+                            Date="{Binding WarrantyDate}"
+                            Margin="5"/>
+
+                <StackLayout Margin="5"
+                             Grid.Column="1">
+                    <Label Text="Asset SN: "/>
+                    <Label Text="{Binding AssetSN}"
+                           FontAttributes="Bold"
+                           x:Name="TextNewSN"/>
+                </StackLayout>
+
+            </Grid>
+
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="BtnCapture"
+                        Clicked="BtnCapture_Clicked"
+                        Text="Capture Image"
+                        Style="{StaticResource BlueButton}"
+                        Margin="5"/>
+
+                <Button x:Name="BtnBrowse"
+                        Clicked="BtnBrowse_Clicked"
+                        Text="Browse"
+                        Style="{StaticResource BlueButton}"
+                        Margin="5"
+                        Grid.Column="1"/>
+            </Grid>
+
+            <ListView Grid.Row="6"
+                      HasUnevenRows="True"
+                      Margin="5"
+                      BackgroundColor="#eee">
+                
+            </ListView>
+
+            <Grid Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="BtnSubmit"
+                        Clicked="BtnSubmit_Clicked"
+                        Text="Submit"
+                        Style="{StaticResource BlueButton}"
+                        Margin="5"/>
+
+                <Button x:Name="BtnCancel"
+                        Clicked="BtnCancel_Clicked"
+                        Text="Cancel"
+                        Style="{StaticResource RedButton}"
+                        Margin="5"
+                        Grid.Column="1"/>
+            </Grid>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

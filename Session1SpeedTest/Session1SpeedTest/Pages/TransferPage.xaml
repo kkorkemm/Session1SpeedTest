@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Session1SpeedTest.Pages.TransferPage"
+             Title="Asset Transfer">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout VerticalOptions="Center"
+                         Margin="5">
+                <Label Text="Selected Asset: "/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout>
+                        <Label Text="Asset Name: "/>
+                        <Entry Text="{Binding AssetName}"
+                           IsEnabled="False"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1">
+                        <Label Text="Current Department: "/>
+                        <Picker x:Name="ComboDepartments"
+                                ItemDisplayBinding="{Binding Name}"
+                                IsEnabled="False"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1">
+                        <Label Text="Asset SN: "/>
+                        <Entry Text="{Binding AssetSN}"
+                               IsEnabled="False"/>
+                    </StackLayout>
+                    
+                </Grid>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="Center"
+                         Margin="5"
+                         Grid.Row="1">
+                <Label Text="Destination Asset: "/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Picker x:Name="ComboDestDepartments"
+                            ItemDisplayBinding="{Binding Name}"
+                            Title="Destination Department"
+                            SelectedIndexChanged="ComboDestDepartments_SelectedIndexChanged"/>
+
+                    <Picker x:Name="ComboDestLocations"
+                            ItemDisplayBinding="{Binding Name}"
+                            Title="Destination Location"
+                            Grid.Column="1"/>
+
+                    <StackLayout Grid.Row="1">
+                        <Label Text="New Asset SN: "/>
+                        <Entry x:Name="TextNewSN"/>
+                    </StackLayout>
+
+                </Grid>
+            </StackLayout>
+
+            <Grid Grid.Row="2"
+                  Margin="5">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="BtnSubmit"
+                        Text="Submit"
+                        Style="{StaticResource BlueButton}"
+                        Clicked="BtnSubmit_Clicked"/>
+
+                <Button x:Name="BtnCancel"
+                        Text="Cancel"
+                        Style="{StaticResource RedButton}"
+                        Clicked="BtnCancel_Clicked"
+                        Grid.Column="1"/>
+                
+            </Grid>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Session1SpeedTest.MainPage"
+             Appearing="ContentPage_Appearing"
+             SizeChanged="ContentPage_SizeChanged">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="5"
+              x:Name="GridPickers">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Picker x:Name="ComboDepartments"
+                    ItemDisplayBinding="{Binding Name}"
+                    Title="Department"
+                    SelectedIndexChanged="ComboDepartments_SelectedIndexChanged"/>
+
+            <Picker x:Name="ComboAssetGroups"
+                    ItemDisplayBinding="{Binding Name}"
+                    Title="Asset Group"
+                    Grid.Column="1"
+                    SelectedIndexChanged="ComboAssetGroups_SelectedIndexChanged"/>
+
+        </Grid>
+
+
+        <StackLayout Grid.Row="1"
+                     x:Name="GridDates"
+                     Margin="5">
+
+            <Label Text="Warranty date range: "
+                   Margin="5"/>
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Margin="5">
+                    <Label Text="Start date:"/>
+                    <DatePicker x:Name="DateStart"
+                                DateSelected="DateStart_DateSelected"/>
+                </StackLayout>
+
+                <StackLayout Margin="5"
+                             Grid.Column="1">
+                    <Label Text="End date:"/>
+                    <DatePicker x:Name="DateEnd"
+                                DateSelected="DateStart_DateSelected"/>
+                </StackLayout>
+
+            </Grid>
+
+        </StackLayout>
+
+        <SearchBar x:Name="SearchBox"
+                   Placeholder="Search"
+                   Grid.Row="2"
+                   Margin="5"
+                   TextChanged="SearchBox_TextChanged"/>
+
+        <Label Text="Asset List: "
+               Margin="5"
+               Grid.Row="3"
+               x:Name="TextTitle"/>
+
+        <ListView Grid.Row="4"
+                  HasUnevenRows="True"
+                  x:Name="ListAssets"
+                  Margin="5">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="10">
+                            <StackLayout>
+                                <Label Text="{Binding AssetName}"/>
+                                <Label Text="{Binding DepartmentName}"
+                                       IsVisible="{Binding IsVisible}"/>
+                                <Label Text="{Binding AssetSN}"/>
+                            </StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Button x:Name="BtnEdit"
+                                        Style="{StaticResource BlueButton}"
+                                        Text="Edit"
+                                        Clicked="BtnEdit_Clicked"/>
+
+                                <Button x:Name="BtnTransfer"
+                                        Style="{StaticResource BlueButton}"
+                                        Text="Transfer"
+                                        Clicked="BtnTransfer_Clicked"
+                                        Grid.Column="1"
+                                        IsVisible="{Binding IsVisible}"/>
+
+                                <Button x:Name="BtnHistory"
+                                        Style="{StaticResource BlueButton}"
+                                        Text="History"
+                                        Clicked="BtnHistory_Clicked"
+                                        Grid.Column="2"
+                                        IsVisible="{Binding IsVisible}"/>
+
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+
+        <Grid Grid.Row="5"
+              Margin="5">
+            <Label x:Name="TextCount"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"
+                   Margin="5"
+                   HorizontalOptions="Start"/>
+            
+            <Button Text="+"
+                    x:Name="BtnAdd"
+                    Style="{StaticResource BlueButton}"
+                    Clicked="BtnAdd_Clicked"
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    CornerRadius="50"
+                    Margin="10"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"/>
+        </Grid>
+        
+    </Grid>
+
+</ContentPage>
